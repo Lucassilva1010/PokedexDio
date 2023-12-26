@@ -1,9 +1,29 @@
 
 //lembrar sempre que todo novo arquivo precisa ser importado la no HTML
 const pokeApi = {}
+
+function convertpokeApiDetalhesDoPokemon(pokeDetalhe) {
+    const pokemon = new Pokemon()
+    pokemon.numero = pokeDetalhe.order
+    pokemon.nome = pokeDetalhe.name
+
+    const tipos = pokeDetalhe.types.map((typesSlot) => typesSlot.type.name)//busca totos os tipos contidos em cada Pokemon
+    const [tipo] = tipos //usando o destruct par apegar a primeira posição
+
+    pokemon.tipos = tipos
+    pokemon.tipoPrincipal = tipo//Lista o Principal tipo de tiver
+
+    pokemon.imagem = pokeDetalhe.sprites.other.dream_world.front_default
+
+    return pokemon// retorna com o novo Pokemon
+}
+
+
+
 pokeApi.getDetalhesPokemons = (pokemon) => {
     return fetch(pokemon.url)
         .then((response) => response.json())
+        .then(convertpokeApiDetalhesDoPokemon)
 }
 
 pokeApi.getPokemons = (offset = 0, limit = 10) => {//Caso não seja repassado nehum valor, esses serão os valores usados por padrão
