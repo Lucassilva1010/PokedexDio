@@ -8,10 +8,10 @@ body {
 }
 
 .content {
-    width: 80vh;
-    height: 80vh;
-    padding: 0rem;
-    background-color: #fff;
+    width: 100vh;
+    height: 100vh;
+    padding: 1rem;
+    background-color: #c4c0c0;
 }
 
 @media screen and (min-width: 992px) {
@@ -25,4 +25,6 @@ body {
 
 .content h1 {
     margin: 0;
+    padding: 10px;
+    margin-top: auto;
 }
